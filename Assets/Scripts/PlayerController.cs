@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;
-    Rigidbody rigidbody;
+    Rigidbody myRigidbody;
 
     public GameObject bulletPrefab;
     public float bulletSpeed;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();    
+        myRigidbody = GetComponent<Rigidbody>();    
     }
 
     // Update is called once per frame
@@ -35,7 +35,10 @@ public class PlayerController : MonoBehaviour
             lastFire = Time.time;
         }
 
-        rigidbody.velocity = new Vector3(horizontal * speed, 0, vertical * speed);
+        myRigidbody.velocity = new Vector3(horizontal * speed, 0, vertical * speed);
+
+        //TODO: Enable rotation of gfx based on direction of movement.
+        
     }
 
     void Shoot(float x, float y)

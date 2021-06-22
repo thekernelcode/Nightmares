@@ -35,9 +35,24 @@ public class PlayerController : MonoBehaviour
             lastFire = Time.time;
         }
 
+        
         myRigidbody.velocity = new Vector3(horizontal * speed, 0, vertical * speed);
 
-        //TODO: Enable rotation of gfx based on direction of movement.
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.rotation = Quaternion.Euler(0,90,0);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.rotation = Quaternion.Euler(0,270,0);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.rotation = Quaternion.Euler(0,180,0);
         
     }
 

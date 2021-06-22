@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             transform.rotation = Quaternion.Euler(0,180,0);
-        
+        }
     }
 
     void Shoot(float x, float y)

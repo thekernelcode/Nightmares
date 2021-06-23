@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 
+    public static int collectedAmount;
+    public Text collectedText;
     public float speed;
     Rigidbody myRigidbody;
 
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0,180,0);
         }
+
+        collectedText.text = "Items Collected: " + collectedAmount;
     }
 
     void Shoot(float x, float y)
@@ -62,4 +67,6 @@ public class PlayerController : MonoBehaviour
         bullet.AddComponent<Rigidbody>().useGravity = false;
         bullet.GetComponent<Rigidbody>().velocity = new Vector3((x < 0) ? Mathf.Floor(x) * bulletSpeed : Mathf.Ceil(x) * bulletSpeed, 0, (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed);
     }
+
+    
 }

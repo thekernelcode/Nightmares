@@ -60,7 +60,9 @@ public class EnemyController : MonoBehaviour
 
     void Wander()
     {
-        transform.position = new Vector3(transform.position.x + 1, transform.position.y, -transform.position.z);
+        //TODO: Add proper wander script
+        // This works but at the moment it isn't programmed to move anywhere
+        transform.position = new Vector3(transform.position.x, transform.position.y, -transform.position.z);
     }
 
     void Follow()

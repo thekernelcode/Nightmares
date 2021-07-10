@@ -15,13 +15,17 @@ public class EnemyController : MonoBehaviour
     GameObject player;
 
     public float range;
+    public float speed = 1f;
 
     public EnemyState currState = EnemyState.Wander;
+
+    Rigidbody enemyRigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -62,7 +66,7 @@ public class EnemyController : MonoBehaviour
     {
         //TODO: Add proper wander script
         // This works but at the moment it isn't programmed to move anywhere
-        transform.position = new Vector3(transform.position.x, transform.position.y, -transform.position.z);
+        enemyRigidbody.velocity = new Vector3(Random.Range(-2,2) * speed, 0, Random.Range(-2, 2) * speed);
     }
 
     void Follow()

@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     public float speed = 1f;
     public float attackRange;
     private bool wandering = false;
+    private Vector3 randomDir;
     private bool dead = false;
     private bool attackCooldown = false;
     public float attackCooldownTimer;
@@ -79,19 +80,23 @@ public class EnemyController : MonoBehaviour
 
     void Wander()
     {
-        if (!wandering)
+        if (wandering == false)
         {
-            StartCoroutine(KeepWandering());
+            StartCoroutine(Wandering());
         }
-        //TODO: Add proper wander script
-        // This works but at the moment it isn't programmed to move anywhere
-        enemyRigidbody.velocity = new Vector3(Random.Range(-2,2) * speed, 0, Random.Range(-2, 2) * speed);
+
+        transform.position += transform.forward * speed * Time.deltaTime; 
     }
 
-    private IEnumerator KeepWandering()
+    private IEnumerator Wandering()
     {
         wandering = true;
-        yield return new WaitForSeconds(Random.Range(2f, 8f));
+        yield return new WaitForSeconds(Random.Range(1f, 4f));
+
+        randomDir = new Vector3(0, Random.Range(0, 360));
+        Quaternion nextRotation = Quaternion.Euler(randomDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Random.Range(0.5f, 1f));
+
         wandering = false;
     }
 
